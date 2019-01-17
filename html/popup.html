@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			img{
+				max-width: 100%;
+				height: auto;
+			}
+			.attribution{
+				color: #999;
+				font-size: smaller;
+				border-top: 1px solid #999;
+				margin-top: 5px;
+				padding: 5px;
+			}
+			.attribution a{
+				color: #999;
+			}
+			.container{
+				min-width: 350px;
+			}
+			h3{
+				font-weight: normal;
+			}
+			#statusHeading,
+			#soundStatus{
+				font-weight: bold;
+			}
+			.status{
+				border-bottom: 1px solid #999;
+				margin-bottom: 5px;
+				padding-bottom: 5px;
+			}
+			.status label,
+			.status input{
+				font-family: Courier, "Courier New", monospace;
+			}
+			.timeButton{
+				display: inline-block;
+				width: 20%;
+			}
+			.blockButton{
+				display: block;
+				width: 100%;
+			}
+			.donation{
+				float: left;
+			}
+			.logo{
+				display: block;
+				width: 85px;
+				float: right;
+			}
+			.branding:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+
+			button{
+				background-color: #333;
+				color: #fff;
+				padding: 3px;
+				box-sizing:border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="status">
+				<h3>Status: <span id="statusHeading"></span></h3>
+				<p><label>Default IP to check: <input type="text" value="" id="default_ip_input" /></label><button class="blockButton" id="default_ip_button">Save &amp; Check now</button></p>
+				<p><label>Public IP right now: <input type="text" disabled id="public_ip_container" /></label><br /><small><strong>Info:</strong> auto-check occurs every 5 minutes</small></p>
+			</div>
+
+			<div class="option">
+				<h3>Sound: <span id="soundStatus"></span></h3>
+				<p>Click to mute for...<br />
+					<button 
+					class="timeButton" id="mute_1h">1 hour</button><button 
+					class="timeButton" id="mute_3h">3 hours</button><button 
+					class="timeButton" id="mute_6h">6 hours</button><button 
+					class="timeButton" id="mute_12h">12 hours</button><button 
+					class="timeButton" id="mute_1d">1 day</button><button 
+					class="blockButton" id="unmute">Enable sound</button>
+				</p>
+			</div>
+
+			<div class="attribution">
+				<p>Icons made by <a href="http://www.freepik.com" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a> and Sound made by Daniel Simon from <a href="http://soundbible.com/2142-FogHorn-Barge.html" title="soundbible" target="_blank">www.soundbible.com</a> are licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>
+			</div>
+
+			<div class="branding">
+				<div class="donation">
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+						">
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+					</form>
+				</div>
+				<a class="logo" href="https://www.falkemedia.at/" target="_blank"><img src="../assets/Logo_1c_auf_weiss.png" alt="Logo FALKEmedia" /></a>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/popup.js"></script>
+	</body>
+</html>
